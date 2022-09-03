@@ -15,5 +15,8 @@
     "dotenv": "^16.0.2",
     "nodemon": "^2.0.19",
     "wokcommands": "^1.5.3"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
   }
 }
