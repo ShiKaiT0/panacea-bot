@@ -44,6 +44,11 @@ export default{
             description: "Si vous voulez ajouter un titre en particulier à votre message.",
             type: DiscordJS.Constants.ApplicationCommandOptionTypes.STRING,
             max_length:256
+        },
+        {
+            name: "messagefin",
+            description : "Avoir le message de 'merci de bien lire l'intégralité' ou pas",
+            type: DiscordJS.Constants.ApplicationCommandOptionTypes.BOOLEAN,
         }
     ],
  
@@ -59,13 +64,15 @@ export default{
         if(interaction.options.getString("type") == "messAdmin"){
             embed.setColor("DARK_RED")
                 .setAuthor({name: "Administration du Corps Médical", iconURL: "https://static.wikia.nocookie.net/starwars/images/d/db/Medical_emblem.svg/revision/latest/scale-to-width-down/1200?cb=20150629233854"})
-                .setFooter({text: "Merci de bien lire l'intégralité du message."})
                 .setFields({
                     name: "Veuillez prendre connaissance du message ci-dessous.",
                     value: interaction.options.getString("contenu")??'',
                 })
                     embed.setTitle(interaction.options.getString("titre")??"A votre attention :")
                 
+                if((interaction.options.getBoolean("messagefin") ?? true) === true){
+                    embed.setFooter({text: "Merci de bien lire l'intégralité du message."})
+                } 
 
                 interaction.reply({
                     embeds: [embed],
@@ -93,15 +100,23 @@ export default{
         if(interaction.options.getString("type") == "messSystem"){
             embed.setAuthor({name: "Système", iconURL: "https://cdn3.emoji.gg/emojis/4887-databaseerror.png"})
             .setColor("BLUE")
-            .setFooter({text: "Merci de bien lire l'intégralité du message."})
             .setTitle(interaction.options.getString("titre")??"Informations Système.")
-
             .setFields(
                 {
                     name: "Reçu :",
                     value: interaction.options.getString("contenu")??""
                 }
             )
+
+            if((interaction.options.getBoolean("messagefin") ?? true) === true){
+                embed.setFooter({text: "Merci de bien lire l'intégralité du message."})
+            } 
+
+            
+
+            interaction.reply({
+                embeds:[embed]
+            })
 
         }
 
