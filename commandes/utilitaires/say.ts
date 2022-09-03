@@ -64,12 +64,8 @@ export default{
                     name: "Veuillez prendre connaissance du message ci-dessous.",
                     value: interaction.options.getString("contenu")??'',
                 })
-
-                if(interaction.options.getString("titre") != undefined){
-                    embed.setTitle(interaction.options.getString("titre")??"")
-                }else{
-                    embed.setTitle("A votre attention :")
-                }
+                    embed.setTitle(interaction.options.getString("titre")??"A votre attention :")
+                
 
                 interaction.reply({
                     embeds: [embed],
@@ -98,6 +94,15 @@ export default{
             embed.setAuthor({name: "Système", iconURL: "https://cdn3.emoji.gg/emojis/4887-databaseerror.png"})
             .setColor("BLUE")
             .setFooter({text: "Merci de bien lire l'intégralité du message."})
+            .setTitle(interaction.options.getString("titre")??"Informations Système.")
+
+            .setFields(
+                {
+                    name: "Reçu :",
+                    value: interaction.options.getString("contenu")??""
+                }
+            )
+
         }
 
 

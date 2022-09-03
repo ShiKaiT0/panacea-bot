@@ -1,7 +1,9 @@
 import DiscordJS, { Intents } from "discord.js"
-import dotenv from "dotenv"
 import path from "path"
 import WOKCommands from "wokcommands"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const client = new DiscordJS.Client({
     intents: [
@@ -26,4 +28,4 @@ client.on('ready', async () =>{
     
 })
 
-client.login("MTAxMzQyODExNDE3NDUwOTA1Nw.GT_20H.AtEJ8e2j0mUhPcATobyZejMu66EchRj_kK-pBk")
+client.login(process.env.TOKEN)
