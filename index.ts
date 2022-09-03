@@ -15,7 +15,7 @@ const client = new DiscordJS.Client({
 
 client.on('ready', async () =>{
     console.log("Connecté !}")
-
+    console.log(process.env.TOKEN)
 
     new WOKCommands(client, {
         commandDir: path.join(__dirname,'commandes'),
