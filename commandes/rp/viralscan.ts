@@ -1,4 +1,4 @@
-import { Icommands } from "WOKCommands";
+import { ICommand} from "WOKCommands";
 import DiscordJS, { MessageEmbed } from 'discord.js';
 
 export default{
@@ -68,7 +68,7 @@ export default{
         let firstRoll = Math.floor(Math.random() * 101)
         let checkQuaRoll = Math.floor(Math.random() * 101)
         let lTime = 0
-        const override = false
+        let override = false
         const tChoices = [15,10,8,7,6]
 
         /**
@@ -76,10 +76,10 @@ export default{
          * Deuxième roll pour vérifier la qualité du scan.
          */
 
-        const Embed = new MessageEmbed()
+        const embed = new MessageEmbed()
         .setAuthor({name: "Technologie d'analyse républicaine", iconURL:"https://cdn3.emoji.gg/emojis/5405_among_us_medbay_remake.png"})
 
-        if(interaction.options.getInteger("difficulté" != undefined)){
+        if(interaction.options.getInteger("difficulté")  != undefined ){
             if(interaction.options.getInteger("difficulté") == 1){lTime = tChoices[4], embed.setColor("GREEN"), override = true}
             if(interaction.options.getInteger("difficulté") == 2){lTime = tChoices[3], embed.setColor("DARK_GREEN"), override = true}
             if(interaction.options.getInteger("difficulté") == 3){lTime = tChoices[2], embed.setColor("YELLOW"), override = true}
@@ -92,4 +92,4 @@ export default{
     }
 
 
-} as Icommand
+} as ICommand
