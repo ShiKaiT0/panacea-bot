@@ -30,17 +30,57 @@ export default{
         },
         {
             name:  "connu",
-            description: "Si votre objet d'analyse est connu.",
-            type: DiscordJS.Constants.ApplicationCommandOptionTypes.BOOLEAN
+            description: "Si votre objet d'analyse est connu. Pour vérifier /checkexistant",
+            type: DiscordJS.Constants.ApplicationCommandOptionTypes.BOOLEAN,
+            required: true,
+        },
+        {
+            name: "difficulté",
+            description : "Difficulté/Niveau de dangerosité du Pathogène",
+            type: DiscordJS.Constants.ApplicationCommandOptionTypes.INTEGER,
+            choices: [
+                {
+                    name: "1",
+                    value: 1,
+                },
+                {
+                    name: "2",
+                    value: 2,
+                },
+                {
+                    name: "3",
+                    value: 3,
+                },
+                {
+                    name: "4",
+                    value: 4,
+                },
+                {
+                    name: "5",
+                    value: 5,
+                }
+            ]
         }
     ],
 
 
     callback : ({interaction}) => {
 
+        let checkQuaRoll = Math.floor(Math.random() * 101)
+        let fTime = 0
+        const tChoices = [15,10,8,7,6]
+
+        /**
+         * Possible : 15m 0-5 ; 10mn 5 -> 30 ; 30-49 : 8mn, 50 -> 75 7mn, >75 6.
+         * Deuxième roll pour vérifier la qualité du scan.
+         */
+
+        const Embed = new MessageEmbed()
+        .setAuthor({name: "Technologie d'analyse républicaine", iconURL:"https://cdn3.emoji.gg/emojis/5405_among_us_medbay_remake.png"})
 
 
 
+        
 
 
     }
